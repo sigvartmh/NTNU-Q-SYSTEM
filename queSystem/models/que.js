@@ -1,11 +1,20 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt-nodejs');
 
 var QueSchema = new Schema({
-    workbench: String,
-    user: User
+    message: String,
+    date: Date,
+    location: { 
+        type: String, 
+        required: true, 
+    },
+    _owner: { 
+    	type: String, 
+    	ref: 'User',
+    	index: { 
+            unique: true 
+        }
+    }
 });
-
 
 module.exports = mongoose.model('Que', QueSchema);

@@ -15,7 +15,8 @@ var UserSchema = new Schema({
         type: String, 
         required: true, 
         select: false 
-    }
+    },
+    staff: Boolean
 });
 
 UserSchema.pre('save', function(next) {

@@ -88,15 +88,17 @@ router.route('/users')
         user.name = req.body.name;
         user.username = req.body.username;
         user.password = req.body.password;
-        
+        user.staff = req.body.staff;
+
         user.save(function(err) {
             if (err){
                 //duplicate
-                if(err.code == 11000)
-                    return  res.json({ 
+                if(err.code == 11000){
+                    return  res.json({
                                 success:false, 
                                 message: 'A user with that username allready exist'
                             });
+                }
                 else
                     return res.send(err);
             }
@@ -121,6 +123,7 @@ router.route('/users/:user_id')
             res.json(user)
         });
     })
+
     .put(function(req, res){
         User.findById(req.params.user_id, function(err, user){
             if(err) res.send(err);
@@ -134,6 +137,7 @@ router.route('/users/:user_id')
             });
         });
     })
+
     .delete(function(req, res){
         User.remove({
             _id: req.params.user_id
@@ -142,5 +146,7 @@ router.route('/users/:user_id')
             res.json({ message: 'Successfully deleted'});
         });
     });
+
+
 
 module.exports = router;

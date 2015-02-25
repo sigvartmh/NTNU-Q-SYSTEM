@@ -12,6 +12,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
 var api = require('./routes/api');
+var que_api =require('./routes/que_api')
 
 
 var app = express();
@@ -35,6 +36,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/admin', admin);
 app.use('/api', api);
+app.use('/api/que', que_api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
