@@ -65,6 +65,7 @@ router.route('/')
                 res.json(que);
         });
     })
+    //FIX ME: Maybe do deletion and put with req.params.que_id.
     .put(function(req, res){
         Que.find({_owner : req.decoded.username},function(err, queId){
             Que.findById(queId[0]._id, function(err, que){ //TODO: Check if it can be done differently
