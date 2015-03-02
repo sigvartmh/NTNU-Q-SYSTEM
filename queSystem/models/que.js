@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var QueSchema = new Schema({
+	assigned: Boolean,
     message: String,
     date: Date,
     location: { 
